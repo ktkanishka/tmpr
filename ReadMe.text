@@ -1,0 +1,19 @@
+/* 
+  ReadMe.text
+  Tmpr
+
+  Created by Kanishka Raveendra on 10/14/19.
+  Copyright © 2019 Kanishka Raveendra. All rights reserved.
+*/
+
+App implemented MVVM-C architecture (Have used child coordinators)
+
+Multiple storyboards are used for each main flows of the app
+
+Need to handle:
+    - Localization on API, date changes with time zones
+    - Pagination on the tableview
+    - Similar folder structure should be used in "View" folder as well.
+    - Planned to implement shrimmer effect (didnt find any time)
+
+Sample json response is hosted in "https://api.myjson.com/bins/xq3hu"
