@@ -30,17 +30,10 @@
 		97156B332356D6F100FC7D42 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B092356D6F000FC7D42 /* Bindable.swift */; };
 		97156B352356D6F100FC7D42 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B0B2356D6F000FC7D42 /* RequestRouter.swift */; };
 		97156B362356D6F100FC7D42 /* CardImageViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B0D2356D6F000FC7D42 /* CardImageViewSmall.swift */; };
-		97156B372356D6F100FC7D42 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B0E2356D6F000FC7D42 /* CustomView.swift */; };
 		97156B382356D6F100FC7D42 /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B0F2356D6F000FC7D42 /* RoundShadowView.swift */; };
-		97156B392356D6F100FC7D42 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B102356D6F000FC7D42 /* CardView.swift */; };
-		97156B3A2356D6F100FC7D42 /* BottomRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B112356D6F000FC7D42 /* BottomRoundedCornersView.swift */; };
 		97156B3B2356D6F100FC7D42 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B122356D6F000FC7D42 /* CustomButton.swift */; };
-		97156B3C2356D6F100FC7D42 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B132356D6F000FC7D42 /* CustomAlertViewController.swift */; };
 		97156B3D2356D6F100FC7D42 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B142356D6F000FC7D42 /* CardImageView.swift */; };
 		97156B3E2356D6F100FC7D42 /* CardViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B152356D6F000FC7D42 /* CardViewSmall.swift */; };
-		97156B3F2356D6F100FC7D42 /* BottomRoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B162356D6F000FC7D42 /* BottomRoundedCornerView.swift */; };
-		97156B402356D6F100FC7D42 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B172356D6F000FC7D42 /* RoundedButton.swift */; };
-		97156B412356D6F100FC7D42 /* TopRoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B182356D6F000FC7D42 /* TopRoundedCornerView.swift */; };
 		97156B432356D73300FC7D42 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97156B422356D73300FC7D42 /* Dashboard.storyboard */; };
 		97156B462356D7D900FC7D42 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B452356D7D900FC7D42 /* Storyboards.swift */; };
 		97156B482356D8D900FC7D42 /* AppServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97156B472356D8D900FC7D42 /* AppServerClient.swift */; };
@@ -99,17 +92,10 @@
 		97156B092356D6F000FC7D42 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		97156B0B2356D6F000FC7D42 /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		97156B0D2356D6F000FC7D42 /* CardImageViewSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardImageViewSmall.swift; sourceTree = "<group>"; };
-		97156B0E2356D6F000FC7D42 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		97156B0F2356D6F000FC7D42 /* RoundShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
-		97156B102356D6F000FC7D42 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		97156B112356D6F000FC7D42 /* BottomRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomRoundedCornersView.swift; sourceTree = "<group>"; };
 		97156B122356D6F000FC7D42 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		97156B132356D6F000FC7D42 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		97156B142356D6F000FC7D42 /* CardImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		97156B152356D6F000FC7D42 /* CardViewSmall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewSmall.swift; sourceTree = "<group>"; };
-		97156B162356D6F000FC7D42 /* BottomRoundedCornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomRoundedCornerView.swift; sourceTree = "<group>"; };
-		97156B172356D6F000FC7D42 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		97156B182356D6F000FC7D42 /* TopRoundedCornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRoundedCornerView.swift; sourceTree = "<group>"; };
 		97156B422356D73300FC7D42 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		97156B452356D7D900FC7D42 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		97156B472356D8D900FC7D42 /* AppServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServerClient.swift; sourceTree = "<group>"; };
@@ -296,17 +282,10 @@
 			isa = PBXGroup;
 			children = (
 				97156B0D2356D6F000FC7D42 /* CardImageViewSmall.swift */,
-				97156B0E2356D6F000FC7D42 /* CustomView.swift */,
 				97156B0F2356D6F000FC7D42 /* RoundShadowView.swift */,
-				97156B102356D6F000FC7D42 /* CardView.swift */,
-				97156B112356D6F000FC7D42 /* BottomRoundedCornersView.swift */,
 				97156B122356D6F000FC7D42 /* CustomButton.swift */,
-				97156B132356D6F000FC7D42 /* CustomAlertViewController.swift */,
 				97156B142356D6F000FC7D42 /* CardImageView.swift */,
 				97156B152356D6F000FC7D42 /* CardViewSmall.swift */,
-				97156B162356D6F000FC7D42 /* BottomRoundedCornerView.swift */,
-				97156B172356D6F000FC7D42 /* RoundedButton.swift */,
-				97156B182356D6F000FC7D42 /* TopRoundedCornerView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -635,7 +614,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				97156B322356D6F000FC7D42 /* Result.swift in Sources */,
-				97156B372356D6F100FC7D42 /* CustomView.swift in Sources */,
 				97156B292356D6F000FC7D42 /* UIButton+Extensions.swift in Sources */,
 				97156B262356D6F000FC7D42 /* MasterViewController.swift in Sources */,
 				97156B362356D6F100FC7D42 /* CardImageViewSmall.swift in Sources */,
@@ -644,20 +622,15 @@
 				972E0FC62354783400DE3C16 /* Tmpr.xcdatamodeld in Sources */,
 				97156B212356D6F000FC7D42 /* HomeViewModel.swift in Sources */,
 				97156B2B2356D6F000FC7D42 /* UIView+Extenstions.swift in Sources */,
-				97156B3A2356D6F100FC7D42 /* BottomRoundedCornersView.swift in Sources */,
 				972E0FBE2354783400DE3C16 /* AppDelegate.swift in Sources */,
 				97156B382356D6F100FC7D42 /* RoundShadowView.swift in Sources */,
 				97156B2D2356D6F000FC7D42 /* UIViewControllerExtension.swift in Sources */,
-				97156B412356D6F100FC7D42 /* TopRoundedCornerView.swift in Sources */,
 				97156B3E2356D6F100FC7D42 /* CardViewSmall.swift in Sources */,
 				97156B272356D6F000FC7D42 /* BaseCoordinator.swift in Sources */,
-				97156B3F2356D6F100FC7D42 /* BottomRoundedCornerView.swift in Sources */,
 				97156B1E2356D6F000FC7D42 /* AppConstants.swift in Sources */,
 				97156B1D2356D6F000FC7D42 /* AppColor.swift in Sources */,
 				97156B1A2356D6F000FC7D42 /* Alert.swift in Sources */,
 				97156B3B2356D6F100FC7D42 /* CustomButton.swift in Sources */,
-				97156B3C2356D6F100FC7D42 /* CustomAlertViewController.swift in Sources */,
-				97156B402356D6F100FC7D42 /* RoundedButton.swift in Sources */,
 				97156B462356D7D900FC7D42 /* Storyboards.swift in Sources */,
 				97156B232356D6F000FC7D42 /* HomeCoordinator.swift in Sources */,
 				97156B1F2356D6F000FC7D42 /* URLConstants.swift in Sources */,
@@ -667,7 +640,6 @@
 				97156B312356D6F000FC7D42 /* HomeTCell.swift in Sources */,
 				97156B222356D6F000FC7D42 /* HomeViewController.swift in Sources */,
 				97156B352356D6F100FC7D42 /* RequestRouter.swift in Sources */,
-				97156B392356D6F100FC7D42 /* CardView.swift in Sources */,
 				97156B282356D6F000FC7D42 /* AppProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
