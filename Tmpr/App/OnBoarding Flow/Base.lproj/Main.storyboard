@@ -132,13 +132,36 @@
                         <outlet property="filterButton" destination="Q8i-5x-mrn" id="2P7-Dj-aDI"/>
                         <outlet property="kaartButton" destination="Qyo-LE-SXP" id="G0C-9x-3w1"/>
                         <outlet property="loginButton" destination="VCJ-Jh-8qy" id="3Xz-wF-InC"/>
+                        <outlet property="noDataView" destination="wjU-VD-kJJ" id="cwh-X1-WV1"/>
                         <outlet property="signupButton" destination="KeO-OD-oYh" id="yon-lr-CZI"/>
                         <outlet property="tableView" destination="TvH-tH-VC5" id="Abs-AI-xQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="wjU-VD-kJJ">
+                    <rect key="frame" x="0.0" y="0.0" width="411" height="222"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dark-data" translatesAutoresizingMaskIntoConstraints="NO" id="Ucq-HX-2sU">
+                            <rect key="frame" x="105.66666666666669" y="11" width="200" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="GE5-Ct-qrx"/>
+                                <constraint firstAttribute="width" constant="200" id="uRB-0o-2cr"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Ucq-HX-2sU" firstAttribute="centerY" secondItem="wjU-VD-kJJ" secondAttribute="centerY" id="Y7H-gn-fet"/>
+                        <constraint firstItem="Ucq-HX-2sU" firstAttribute="centerX" secondItem="wjU-VD-kJJ" secondAttribute="centerX" id="oic-6y-hQr"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="pCF-8u-7Bh"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="124.72826086956523"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dark-data" width="256" height="256"/>
+    </resources>
 </document>

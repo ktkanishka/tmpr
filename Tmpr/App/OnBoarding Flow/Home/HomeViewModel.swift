@@ -65,18 +65,18 @@ class HomeViewModel: NSObject {
                     print("DATA: \(data)")
                     self.dataSourceItems.removeAll()
                     
-//                    if (self.dataSourceItems.count == 0) {
-//                        print("nodata")
-                        for taskItem in data as! Array<HomeItemModel> {
-                            let taskRowItem = HomeRowItem(itemHome: taskItem)
-                            print("\(String(describing: taskRowItem.item.title))")
-                            self.dataSourceItems.append(taskRowItem)
+                    let responseArray = data as! Array<HomeItemModel>
+                    if (responseArray.count != 0) {
+                        for homeItem in responseArray {
+                            let homeRowItem = HomeRowItem(itemHome: homeItem)
+                            //print("\(String(describing: homeRowItem.item.title))")
+                            self.dataSourceItems.append(homeRowItem)
                         }
                         self.reloadTableView?(1)
-//                    } else {
-//                        self.reloadTableView?(0)
-//                    }
-                    
+                    } else {
+                        self.reloadTableView?(0)
+                    }
+                
                     
                     break
                     

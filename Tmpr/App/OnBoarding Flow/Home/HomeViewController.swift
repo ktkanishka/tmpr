@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     //fileprivate let viewModel = HomeViewModel()
-    //var viewModel: HomeViewModel?
     var viewModel = HomeViewModel()
     @IBOutlet weak var noDataView: UIView!
     var disposeBag =  DisposeBag()
@@ -98,7 +97,8 @@ class HomeViewController: UIViewController {
     @objc func updateHomeFeedList() {
         self.view.endEditing(true)
         
-        // Call webservice here after reload tableview.
+        // Call WebService.
+        self.refreshControl.beginRefreshing()
         viewModel.getHomeFeedWS()
     }
 

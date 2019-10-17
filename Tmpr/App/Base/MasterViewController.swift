@@ -33,7 +33,7 @@ class MasterViewController: UIViewController {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         //let build = dictionary["CFBundleVersion"] as! String
-        return "SANKARAA NS Apps V\(version)"
+        return "Temper Works V\(version)"
     }
     
     // MARK: - HUD

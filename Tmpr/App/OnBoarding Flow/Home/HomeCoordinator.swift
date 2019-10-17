@@ -17,11 +17,10 @@ class HomeCoordinator: BaseCoordinator {
 
         let homeViewController = HomeViewController.instantiate(fromAppStoryboard: .Main)
         
-        // Now Coordinator initializes and injects viewModel
+        // Coordinator initializes and injects viewModel
         let homeViewModel = HomeViewModel()
         homeViewController.viewModel = homeViewModel
         
-        // Coordinator subscribes to events and notifies parentCoordinator
         self.navigationController.viewControllers = [homeViewController]
     }
 }
