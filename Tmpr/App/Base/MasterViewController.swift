@@ -44,24 +44,7 @@ class MasterViewController: UIViewController {
     
     func hideHUD() {
         HUD.flash(.success, delay: 1.0)
-    }
-    
-    // MARK: - AlertView
-    func showAlert(title: String!, message: String!, actions: [UIAlertAction]!){
-        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
-        
-//        if actions == nil {
-//            let languageType = UserDefaultHelper().getLanguageType()
-//            let defaultAction = UIAlertAction.init(title: languageType.localStringForKey(key: "default_action"), style: .default, handler: nil)
-//            alert.addAction(defaultAction)
-//        }else {
-//            for action in actions {
-//                alert.addAction(action)
-//            }
-//        }
-//        
-//        present(alert, animated: true, completion: nil)
-    }
+    }        
     
 }
 

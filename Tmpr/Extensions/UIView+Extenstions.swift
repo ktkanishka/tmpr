@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-
 //MARK: Draw Underline
 //https://stackoverflow.com/questions/26800963/add-bottom-line-to-view-in-swift-objective-c-xamarin
-
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: Int = 16) {
         let maskPath1 = UIBezierPath(roundedRect: bounds,

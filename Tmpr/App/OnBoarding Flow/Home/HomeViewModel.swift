@@ -40,7 +40,6 @@ class HomeViewModel: NSObject {
     
     var reloadSections: ((_ section: Int) -> Void)?
     var reloadTableView: ((_ dataExists: Int) -> Void)?
-    //var reloadCollectionViewCallback : (()->())!
     
     weak var tableRowDidSelectDelegate: TableViewRowDidSelectDelegate?
     var dataSourceItems = [RowItemProtocol]()
@@ -85,14 +84,14 @@ class HomeViewModel: NSObject {
                     break
                     
                 case .requestError(let message):
-                    print("ERROR CUSTOM:\(message)")
+                    print("ERROR:\(message)")
                     self.reloadTableView?(0)
-//                    let okAlert = SingleButtonAlert(
-//                        title: "Error!",
-//                        message: "Could not connect to server. Check your network and try again later.",
-//                        action: AlertAction(buttonTitle: "OK", handler: { print("Ok pressed!") })
-//                    )
-//                    self.onShowError?(okAlert)
+                    let okAlert = SingleButtonAlert(
+                        title: "Error!",
+                        message: "Could not connect to server. Check your network and try again later.",
+                        action: AlertAction(buttonTitle: "OK", handler: { print("Ok pressed!") })
+                    )
+                    self.onShowError?(okAlert)
                     break
                 }
         })
@@ -110,7 +109,7 @@ extension HomeViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let item = dataSourceItems[indexPath.section]
+        
         let itemRow: RowItemProtocol!
         itemRow = dataSourceItems[indexPath.row]
 

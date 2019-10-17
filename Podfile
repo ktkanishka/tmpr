@@ -11,13 +11,7 @@ def shared_pods
     
     pod 'PKHUD', '~> 5.0'
     pod 'RxSwift',    '~> 4.0'
-#    pod 'RxCocoa',    '~> 4.0'
     pod 'Result'
-#    pod 'RxBlocking'
-#    pod 'RxOptional'
-
-#    pod 'Moya', '~> 11.0'
-#    pod 'DLRadioButton', '~> 1.4'
 
     pod 'SwiftMessages', '~> 5.0'
     pod 'Toast-Swift', '~> 4.0.0'

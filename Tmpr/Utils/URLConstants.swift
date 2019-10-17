@@ -15,8 +15,7 @@ struct APPURL {
         static let UAT = "https://api.myjson.com"
         static let Local = "192.145.1.1"
         static let QA = "https://api.myjson.com"
-    }
-    
+    }    
     
     static let FETCH_HOME_FEED_ID = "xq3hu"
     

@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-//Ex: Usage
-//let loginscene = SecondViewController.instantiate(fromAppStoryboard: .Second)
-//self.present(loginscene, animated: true, completion: nil)
-
 enum AppStoryboard : String {
     
     case Main, Dashboard

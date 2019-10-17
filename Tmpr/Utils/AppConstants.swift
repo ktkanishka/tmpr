@@ -57,10 +57,3 @@ struct iOSVersion {
     static let iOS8 = (iOSVersion.SYS_VERSION_FLOAT >= 8.0 && iOSVersion.SYS_VERSION_FLOAT < 9.0)
     static let iOS9 = (iOSVersion.SYS_VERSION_FLOAT >= 9.0 && iOSVersion.SYS_VERSION_FLOAT < 10.0)
 }
-
-/*
-Ex:
-if DeviceType.IS_IPHONE_6 {
-    //iPhone 6 specific code goes here.
-}
-*/

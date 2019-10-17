@@ -107,12 +107,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : TableViewRowDidSelectDelegate {
     func didSelectTCell<T>(selectedItem: Any, dataType: T.Type) {
-        //if let taskProtocol = selectedItem as? RowItemProtocol {
-        //let rowItem = selectedItem as? HomeRowItem
-        
-//        let nextVC = (self.storyboard?.instantiateViewController(withIdentifier: "ServiceVisitDetailsViewController")) as! ServiceVisitDetailsViewController
-//        nextVC.passedTBTask = rowItem?.item
-//        self.navigationController?.pushViewController(nextVC, animated: true)
-        
+  
     }
 }
