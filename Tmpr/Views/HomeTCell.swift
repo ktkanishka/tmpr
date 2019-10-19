@@ -17,8 +17,7 @@ class HomeTCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    //var itemIndex: Int = 0
-    var itemHome: HomeItemModel? {
+    var itemHome: HomeModel? {
         didSet {
             guard itemHome != nil else {
                 return
@@ -34,7 +33,14 @@ class HomeTCell: UITableViewCell {
             if let status = itemHome?.status, let distance = itemHome?.distance {
                 statusLabel.text = String(format: "%@ . %@", status, distance)
             } else {
-                statusLabel.text = "-"
+                // this value might not be correct, should be done according to business logic
+                statusLabel.text = "SERVING"
+            }
+            
+            if let price = itemHome?.price {
+                priceLabel.text = String(format: "€ %.2i", price)
+            } else {
+                priceLabel.text = "€ 0.00"
             }
             
             if let title = itemHome?.title {
@@ -43,8 +49,8 @@ class HomeTCell: UITableViewCell {
                 titleLabel.text = "-"
             }
             
-            if let time = itemHome?.open_time {
-                timeLabel.text = time
+            if let startTime = itemHome?.open_time,  let endTime = itemHome?.end_time{
+                timeLabel.text = String(format: "%@ - %@", startTime, endTime)
             } else {
                 timeLabel.text = "-"
             }

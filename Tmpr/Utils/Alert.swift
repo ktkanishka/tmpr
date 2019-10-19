@@ -1,10 +1,11 @@
 //
 //  Alert.swift
-//  Friends
+//  Tmpr
 //
-//  Created by Jussi Suojanen on 09/01/17.
-//  Copyright © 2017 Jimmy. All rights reserved.
+//  Created by Kanishka Raveendra on 10/16/19.
+//  Copyright © 2019 Kanishka Raveendra. All rights reserved.
 //
+
 import UIKit
 
 struct AlertAction {

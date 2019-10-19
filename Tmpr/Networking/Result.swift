@@ -1,9 +1,9 @@
 //
 //  Result.swift
-//  Friends
+//  Tmpr
 //
-//  Created by Jussi Suojanen on 04/02/17.
-//  Copyright © 2017 Jimmy. All rights reserved.
+//  Created by Kanishka Raveendra on 10/16/19.
+//  Copyright © 2019 Kanishka Raveendra. All rights reserved.
 //
 
 enum Result<T, U: Error> {

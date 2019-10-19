@@ -11,7 +11,3 @@ import Foundation
 protocol TableViewRowDidSelectDelegate : class {
     func didSelectTCell<T>(selectedItem: Any, dataType: T.Type)
 }
-
-//protocol DataPassDelegate: class {
-//    func clickOnTableviewCell(selectedSVORowItem: SVORowItem)
-//}

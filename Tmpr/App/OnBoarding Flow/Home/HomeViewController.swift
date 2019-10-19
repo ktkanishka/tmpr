@@ -9,12 +9,11 @@
 import UIKit
 import RxSwift
 import PKHUD
-import SwiftMessages
+import RxCocoa
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-    //fileprivate let viewModel = HomeViewModel()
     var viewModel = HomeViewModel()
     @IBOutlet weak var noDataView: UIView!
     var disposeBag =  DisposeBag()
@@ -34,23 +33,20 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var containerButtonView: UIView!
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = AppColor.appDefaultBackgroundColor
         self.view.backgroundColor = AppColor.appDefaultBackgroundColor
         
         bindViewModel()
         
-        loginButton.layer.cornerRadius = 5
-        loginButton.layer.borderWidth = 1
-        loginButton.layer.borderColor = UIColor.black.cgColor
+        loginButton.makeBorderLine()
         
         viewModel.reloadTableView = { [weak self] (dataExists: Int) in
             //print(" reloadTableView ")
@@ -68,7 +64,8 @@ class HomeViewController: UIViewController {
         tableView?.delegate = viewModel
         
         tableView?.register(HomeTCell.nib, forCellReuseIdentifier: HomeTCell.identifier)
-
+        tableView?.register(HomeHeader.nib, forHeaderFooterViewReuseIdentifier: HomeHeader.identifier)
+        
         viewModel.tableRowDidSelectDelegate = self
         
         if #available(iOS 10.0, *) {
@@ -77,6 +74,7 @@ class HomeViewController: UIViewController {
             tableView?.addSubview(self.refreshControl)
         }
         
+        //call web service
         self.updateHomeFeedList()
     }
     
@@ -101,12 +99,12 @@ class HomeViewController: UIViewController {
         self.refreshControl.beginRefreshing()
         viewModel.getHomeFeedWS()
     }
-
+    
 }
 
 
 extension HomeViewController : TableViewRowDidSelectDelegate {
     func didSelectTCell<T>(selectedItem: Any, dataType: T.Type) {
-  
+        //TODO: did select cell
     }
 }

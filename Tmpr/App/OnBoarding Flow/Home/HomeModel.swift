@@ -12,13 +12,16 @@ import ObjectMapper
 import AlamofireObjectMapper
 import SwiftyJSON
 
-class HomeItemModel: Mappable {
+class HomeModel : Mappable {
+    
     var title: String?
     var id: Int?
     var key: String?
     var open_time: String?
+    var end_time: String?
     var status: String?
     var price: String?
+    var currency: String?
     var distance: String?
     var photo_url: String?
     
@@ -26,11 +29,13 @@ class HomeItemModel: Mappable {
         title <- map["title"]
         id <- map["id"]
         key <- map["key"]
-        open_time <- map["open_time"]
+        open_time <- map["shifts.0.start_time"]
+        end_time <- map["shifts.0.end_time"]
         status <- map["status"]
-        price <- map["price"]
+        price <- map["shifts.0.earnings_per_hour"]
+        currency <- map["shifts.0.currency"]
         distance <- map["distance"]
-        photo_url <- map["photo_url"]
+        photo_url <- map["photo"]
     }
     
     required init?(map: Map) {
@@ -38,29 +43,21 @@ class HomeItemModel: Mappable {
         id = 0
         key = ""
         open_time = ""
+        end_time = ""
         status = ""
         price = ""
+        currency = ""
         distance = ""
         photo_url = ""
     }
-}
-
-class HomeModel: Mappable {
-    var data: [HomeItemModel]?
     
-    func mapping(map: Map) {
-        data <- map["data"]
-    }
-    
-    required init?(map: Map) {
-        data = []
-    }
-    
-    //MARK : GET HomeFEED LIST
+    //MARK : GET HOMEFEED LIST
     static func getHomeFeed (completion: @escaping (_ error: RequestResults, _ result: Any) -> Void) {
         
-        let baseURL = String(format: "%@/%@/%@", APPURL.Domains.Dev, APPURL.PATH, APPURL.FETCH_HOME_FEED_ID)
-        print("Rest Domain: \(baseURL)")
+        //dates are hardcoded
+        let baseURL = String(format: "%@/%@%@", APPURL.Domains.Dev, APPURL.PATH, "2019-10-16,2019-10-17,2019-10-18,2019-10-19")
+        
+        //print("Rest Domain: \(baseURL)")
         
         if let url = URL(string: baseURL) {
             var urlRequest = URLRequest(url: url)
@@ -72,24 +69,14 @@ class HomeModel: Mappable {
             Alamofire.request(urlRequest).responseJSON { (response: DataResponse<Any>) in
                 switch response.result {
                 case .success:
-                    
-                    //print("Request: \(String(describing: response.request))")   // original url request
-                    //print("Response: \(String(describing: response.response))") // http url response
-                    //print("Result: \(response)")
-                    
-                    let listArray = NSMutableArray()
                     guard let responseJSON = response.result.value as? [String: Any] else { return }
                     if let mResponse = responseJSON["data"] {
-                        let itemsArray = mResponse as! NSArray
-                        for object in itemsArray {
-                            //print("HomeItemModelModel Object :\(object)")
-                            let tsk = Mapper<HomeItemModel>().map(JSONObject: object)
-                            listArray.add(tsk!)
+                        if let dicArray = Mapper<HomeModel>()
+                            .mapDictionaryOfArrays(JSONObject: mResponse) {                            
+                            completion(RequestResults.success, dicArray)
                         }
-                        completion(RequestResults.success, listArray)
-
                     } else {
-                        completion(RequestResults.failed, listArray)
+                        completion(RequestResults.failed, [])
                     }
                     
                     break
@@ -97,7 +84,6 @@ class HomeModel: Mappable {
                 case .failure(let error):
                     completion(RequestResults.requestError(message: error.localizedDescription), error)
                     print("REQUEST FAILED: \(error)")
-                    print("REQUEST FAILED: \(error.localizedDescription)")
                     break
                 }
             }

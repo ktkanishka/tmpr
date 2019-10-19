@@ -1,9 +1,9 @@
 //
 //  UIViewControllerExtension.swift
-//  Friends
+//  Tmpr
 //
-//  Created by Jussi Suojanen on 22/06/2017.
-//  Copyright © 2017 Jimmy. All rights reserved.
+//  Created by Kanishka Raveendra on 10/16/19.
+//  Copyright © 2019 Kanishka Raveendra. All rights reserved.
 //
 
 import UIKit
@@ -21,5 +21,14 @@ extension SingleButtonDialogPresenter where Self: UIViewController {
                                                 style: .default,
                                                 handler: { _ in alert.action.handler?() }))
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension UIViewController {
+    
+    func showAlert(title: String, message: String) {
+        let viewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        viewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(viewController, animated: true, completion: nil)
     }
 }

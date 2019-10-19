@@ -11,7 +11,8 @@ import UIKit
 import RxSwift
 
 protocol HomeEventListener {
-    func didLandDahshboard()
+    func didTappedLogIn()
+    func didTappedSignUp()
 }
 
 class AppCoordinator: BaseCoordinator {
@@ -31,7 +32,11 @@ class AppCoordinator: BaseCoordinator {
 }
 
 extension AppCoordinator: HomeEventListener {
-    func didLandDahshboard() {
-        // TODO: Navigate to Dashboard
+    func didTappedLogIn() {
+        // TODO: Navigate to loginviewcontroller
+    }
+    
+    func didTappedSignUp() {
+        // TODO: Navigate to signupviewcontroller
     }
 }

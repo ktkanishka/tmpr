@@ -14,7 +14,7 @@ class HomeCoordinator: BaseCoordinator {
     private let disposeBag = DisposeBag()
     
     override func start() {
-
+        
         let homeViewController = HomeViewController.instantiate(fromAppStoryboard: .Main)
         
         // Coordinator initializes and injects viewModel

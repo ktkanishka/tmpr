@@ -10,48 +10,38 @@ import Foundation
 import UIKit
 import RxSwift
 
-enum SVORowItemType {
+enum RowItemType {
     case row
 }
 
 protocol RowItemProtocol {
-    var type: SVORowItemType { get }
-    var sectionTitle: String { get }
-    var rowCount: Int { get }
-    var isCollapsible: Bool { get }
-    var isCollapsed: Bool { get set }
-}
-
-protocol SVOViewPresentable {
-    var searhValue: Variable<String> {get}
-}
-
-extension RowItemProtocol {
-    var rowCount: Int {
-        return 1
-    }
-    
-    var isCollapsible: Bool {
-        return true
-    }
+    var type: RowItemType { get }
+    var sectionTitle: Date { get }
 }
 
 class HomeViewModel: NSObject {
     
-    var reloadSections: ((_ section: Int) -> Void)?
-    var reloadTableView: ((_ dataExists: Int) -> Void)?
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = KEY.APP_DATE_FORMAT
+        return formatter
+    }()
     
+    var reloadTableView: ((_ dataExists: Int) -> Void)?
     weak var tableRowDidSelectDelegate: TableViewRowDidSelectDelegate?
     var dataSourceItems = [RowItemProtocol]()
     
-    var disposeBag =  DisposeBag()
+    var disposeBag = DisposeBag()
+    
+    let didLogin = PublishSubject<Void>()
+    let didFailLogin = PublishSubject<Error>()
     
     var onShowError: ((_ alert: SingleButtonAlert) -> Void)?
     let showLoadingHud: Bindable = Bindable(false)
     
     override init() {
         super.init()
-    }
+    }             
     
     @objc func getHomeFeedWS() {
         showLoadingHud.value = true
@@ -60,39 +50,47 @@ class HomeViewModel: NSObject {
                 self.showLoadingHud.value = false
                 
                 switch result {
-                case .success:
-                    
-                    print("DATA: \(data)")
-                    self.dataSourceItems.removeAll()
-                    
-                    let responseArray = data as! Array<HomeItemModel>
-                    if (responseArray.count != 0) {
-                        for homeItem in responseArray {
-                            let homeRowItem = HomeRowItem(itemHome: homeItem)
-                            //print("\(String(describing: homeRowItem.item.title))")
-                            self.dataSourceItems.append(homeRowItem)
+                    case .success:
+                        
+                        self.dataSourceItems.removeAll()
+                        
+                        let responseArray = data as! Dictionary<String, [HomeModel]>
+                        //print("DATA: \(responseArray.count)")
+                        if (responseArray.count != 0) {
+                            
+                            //Sort array of dictionary
+                            let sortedArray = responseArray.sorted {
+                                guard let d1 = self.formatter.date(from:$0.key), let d2 = self.formatter.date(from:$1.key) else { return false }
+                                return d1 > d2
+                            }
+                            
+                            for (key, array) in sortedArray {
+                                if (array.count != 0) {
+                                    if let date = self.formatter.date(from: key) {
+                                        let homeRowItem = HomeRowItem(array: array, headingDate: date)
+                                        self.dataSourceItems.append(homeRowItem)
+                                    }
+                                }
+                            }
+                            self.reloadTableView?(1)
+                        } else {
+                            self.reloadTableView?(0)
                         }
-                        self.reloadTableView?(1)
-                    } else {
+                        break
+                    
+                    case .failed:
+                        break
+                    
+                    case .requestError(let message):
+                        print("ERROR:\(message)")
                         self.reloadTableView?(0)
-                    }
-                
-                    
-                    break
-                    
-                case .failed:
-                    break
-                    
-                case .requestError(let message):
-                    print("ERROR:\(message)")
-                    self.reloadTableView?(0)
-                    let okAlert = SingleButtonAlert(
-                        title: "Error!",
-                        message: "Could not connect to server. Check your network and try again later.",
-                        action: AlertAction(buttonTitle: "OK", handler: { print("Ok pressed!") })
-                    )
-                    self.onShowError?(okAlert)
-                    break
+                        let okAlert = SingleButtonAlert(
+                            title: "Error!",
+                            message: "Could not connect to server. Check your network and try again later.",
+                            action: AlertAction(buttonTitle: "OK", handler: { print("Ok pressed!") })
+                        )
+                        self.onShowError?(okAlert)
+                        break
                 }
         })
     }
@@ -100,29 +98,27 @@ class HomeViewModel: NSObject {
 }
 
 extension HomeViewModel: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataSourceItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSourceItems.count
+        let itemRow = dataSourceItems[section] as? HomeRowItem
+        return itemRow?.listArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let itemRow: RowItemProtocol!
-        itemRow = dataSourceItems[indexPath.row]
-
-        switch itemRow.type {
-            case .row:
-                if let item = itemRow as? HomeRowItem,
-                    let cell = tableView.dequeueReusableCell(withIdentifier: HomeTCell.identifier, for: indexPath) as? HomeTCell {
-                    cell.selectionStyle = .none
-                    cell.itemHome = item.item
-                    return cell
-                }
+        let itemRow = dataSourceItems[indexPath.section]
+        if let item = itemRow as? HomeRowItem,
+            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTCell.identifier, for: indexPath) as? HomeTCell {
+            let selectedItem = item.listArray[indexPath.row]
+            cell.selectionStyle = .none
+            cell.itemHome = selectedItem
+            return cell
         }
-
+        
         return UITableViewCell()
     }
 }
@@ -130,51 +126,35 @@ extension HomeViewModel: UITableViewDataSource {
 extension HomeViewModel: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if let headerView:MerchandisingHeader =
-//            tableView.dequeueReusableHeaderFooterView(withIdentifier: MerchandisingHeader.identifier)
-//                as? MerchandisingHeader {
-//            
-//            //let svoRowItem = dataSourceItems[section]
-//            let taskRowItem: RowItemProtocol!
-//            //            if (searchActive) {
-//            //                svoRowItem = filteredDataSourceItems[section]
-//            //            } else {
-//            taskRowItem = dataSourceItems[section]
-//            //            }
-//            headerView.item = taskRowItem
-//            headerView.section = section
-//            headerView.delegate = self
-//            return headerView
-//        }
+        if let headerView:HomeHeader =
+            tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeHeader.identifier)
+                as? HomeHeader {
+
+            let taskRowItem = dataSourceItems[section]
+            headerView.sectionTitle = taskRowItem.sectionTitle
+            return headerView
+        }
         return UIView()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("DidSelect SVO: \(svoRowItem.sectionTitle)")
-        let homeRowItem: RowItemProtocol!
-        homeRowItem = dataSourceItems[indexPath.row]
-        //self.tableRowDidSelectDelegate?.didSelectTCell(selectedItem: taskRowItem, dataType: RowItemProtocol.self)
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70.0
     }
     
 }
 
 class HomeRowItem: RowItemProtocol {
-    var type: SVORowItemType {
+   
+    var type: RowItemType {
         return .row
     }
     
-    var sectionTitle: String {
-        return ""
-    }
+    var sectionTitle: Date
     
-    var rowCount: Int {
-        return 1
-    }
+    var listArray: [HomeModel]
     
-    var isCollapsed = false
-    
-    var item:HomeItemModel
-    init(itemHome: HomeItemModel) {
-        self.item = itemHome
+    init ( array: [HomeModel], headingDate: Date ) {
+        self.listArray = array
+        self.sectionTitle = headingDate
     }
 }

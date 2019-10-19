@@ -22,7 +22,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7ft-D5-1Yf">
                         <rect key="frame" x="15" y="15" width="290" height="274.66666666666669"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZa-11-NDl" userLabel="ContainerView" customClass="CardImageViewSmall" customModule="Tmpr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZa-11-NDl" userLabel="ContainerView" customClass="CardImageView" customModule="Tmpr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="TLd-OW-47C">

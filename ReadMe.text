@@ -15,5 +15,3 @@ Need to handle:
     - Pagination on the tableview
     - Similar folder structure should be used in "View" folder as well.
     - Planned to implement shrimmer effect (didnt find any time)
-
-Sample json response is hosted in "https://api.myjson.com/bins/xq3hu"

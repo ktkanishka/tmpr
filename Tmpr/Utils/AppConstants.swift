@@ -1,39 +1,22 @@
 //
 //  AppConstants.swift
-//  M.SMS
+//  Tmpr
 //
-//  Created by Kanishka Raveendra on 6/14/18.
-//  Copyright © 2018 Kanishka Raveendra. All rights reserved.
+//  Created by Kanishka Raveendra on 10/16/19.
+//  Copyright © 2019 Kanishka Raveendra. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 struct KEY {
-    
-    struct UserDefaults {        
-        
+    struct UserDefaults {
         static let ALREADY_LOGGEDIN_KEY = "is_already_loggedin_key"
-        static let ACCOUNT_KEY = "account_key"
-        static let ROLE_INTERNAL_ID_KEY = "role_internal_id_key"
-        static let EMPLOYEE_ID_KEY = "employee_id_key"
-        static let SUPERVISOR_ID_KEY = "supervisor_id_key"
-        static let ROLE_TYPE_KEY = "role_type_key"
-        
-        static let ROW_SELECTED_SIDE_MENU_KEY = "row_selected_side_menu_key"
-        
     }
     
-    static let APP_DATE_FORMAT = "dd/MM/yyyy"
-    
-    enum ACTION: String {
-        case GENERATE_PDF = "pendingSignature" // generate pdf
-        case COMPLETED = "completed" //completed without signature
-        case SIGNED_SVO = "signed" //completed with signature
-        case CANCELLED_SVO = "cancelled" // svo cancelled
-    }
-    
+    static let APP_DATE_FORMAT = "yyyy-MM-dd"
 }
+
 
 
 struct ScreenSize {

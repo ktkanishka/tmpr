@@ -11,6 +11,7 @@ def shared_pods
     
     pod 'PKHUD', '~> 5.0'
     pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa'
     pod 'Result'
 
     pod 'SwiftMessages', '~> 5.0'
@@ -34,7 +35,7 @@ end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if ['Eureka', 'PopupDialog', 'SideMenu', 'NotificationBannerSwift', 'GrowingTextView', 'Toast-Swift'].include? target.name
+        if ['Toast-Swift'].include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.2'
             end
